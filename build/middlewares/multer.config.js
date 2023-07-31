@@ -14,6 +14,7 @@ var storage = multer_1.default.diskStorage({
     },
 });
 var fileFilter = function (req, file, cb) {
+    req.body.mimeType = file.mimetype;
     // Check if the file is an image (you can add more checks as needed).
     if (file.mimetype === "image/jpeg" ||
         file.mimetype === "image/png" ||

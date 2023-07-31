@@ -7,10 +7,10 @@ export class CattleData {
   id: number;
 
   @Column()
-  filePath: string;
+  filename: string;
 
   @Column()
-  filename: string;
+  RFID: string;
 
   @Column()
   mimeType: string;
@@ -22,8 +22,8 @@ export class CattleData {
     if (!data) {
         return;
     }
-    this.filePath = data.filePath;
     this.filename = data.filename;
     this.mimeType = data.mimeType;
+    this.RFID = data.RFID;
   }
 }

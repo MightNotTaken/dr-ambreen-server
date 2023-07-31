@@ -16,9 +16,9 @@ var CattleData = /** @class */ (function () {
         if (!data) {
             return;
         }
-        this.filePath = data.filePath;
         this.filename = data.filename;
         this.mimeType = data.mimeType;
+        this.RFID = data.RFID;
     }
     __decorate([
         (0, typeorm_1.PrimaryGeneratedColumn)(),
@@ -27,11 +27,11 @@ var CattleData = /** @class */ (function () {
     __decorate([
         (0, typeorm_1.Column)(),
         __metadata("design:type", String)
-    ], CattleData.prototype, "filePath", void 0);
+    ], CattleData.prototype, "filename", void 0);
     __decorate([
         (0, typeorm_1.Column)(),
         __metadata("design:type", String)
-    ], CattleData.prototype, "filename", void 0);
+    ], CattleData.prototype, "RFID", void 0);
     __decorate([
         (0, typeorm_1.Column)(),
         __metadata("design:type", String)

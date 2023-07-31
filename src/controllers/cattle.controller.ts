@@ -6,21 +6,21 @@ import { CattleData } from "../entity/CattleData";
 const CattleRepository = AppDataSource.getRepository(CattleData);
 
 class CattleController {
-    public async createCattle(req: Request, res: Response) {
-        try {
-          const cattleData: CattleInterface = req.body;
+  public async createCattle(req: Request, res: Response) {
+    try {
+      const cattleData: CattleInterface = req.body;
 
-          const uploadedImage = req.file;
-          cattleData.filename = uploadedImage.filename; // Store the filename in the cattleData
-      
-          const cattle = new CattleData(cattleData);
-          await CattleRepository.save(cattle);
-          res.status(201).json(cattle);
-        } catch (err) {
-          console.error(err);
-          res.status(500).json(err);
-        }
-      }
+      const uploadedImage = req.file;
+      cattleData.filename = uploadedImage.filename; // Store the filename in the cattleData
+
+      const cattle = new CattleData(cattleData);
+      await CattleRepository.save(cattle);
+      res.status(201).json(cattle);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json(err);
+    }
+  }
 
   public async getAllCattle(req: Request, res: Response) {
     try {

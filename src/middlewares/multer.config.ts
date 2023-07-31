@@ -16,6 +16,7 @@ const fileFilter = (
   file: Express.Multer.File,
   cb: multer.FileFilterCallback
 ) => {
+  req.body.mimeType = file.mimetype;
   // Check if the file is an image (you can add more checks as needed).
   if (
     file.mimetype === "image/jpeg" ||
