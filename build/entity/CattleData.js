@@ -19,6 +19,7 @@ var CattleData = /** @class */ (function () {
         this.filename = data.filename;
         this.mimeType = data.mimeType;
         this.RFID = data.RFID;
+        this.position = data.position;
     }
     __decorate([
         (0, typeorm_1.PrimaryGeneratedColumn)(),
@@ -40,6 +41,10 @@ var CattleData = /** @class */ (function () {
         (0, typeorm_1.CreateDateColumn)(),
         __metadata("design:type", Date)
     ], CattleData.prototype, "timestamp", void 0);
+    __decorate([
+        (0, typeorm_1.Column)(),
+        __metadata("design:type", String)
+    ], CattleData.prototype, "position", void 0);
     CattleData = __decorate([
         (0, typeorm_1.Entity)(),
         __metadata("design:paramtypes", [Object])

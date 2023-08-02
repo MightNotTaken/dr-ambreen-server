@@ -1,13 +1,20 @@
 import multer from "multer";
 import { Request } from "express";
+import path from "path";
+import fs from "fs";
 
 const storage = multer.diskStorage({
   destination: function (req: Request, file: Express.Multer.File, cb) {
-    cb(null, "uploads/");
+    const folderName = path.join("uploads", req.body.RFID);
+    if (!fs.existsSync(folderName)) {
+      fs.mkdirSync(folderName, {
+        recursive: true
+      });
+    }
+    cb(null, folderName);
   },
   filename: function (req: Request, file: Express.Multer.File, cb) {
-    // Use the original filename without any modifications
-    cb(null, file.originalname);
+    cb(null, file?.originalname);
   },
 });
 
@@ -16,6 +23,9 @@ const fileFilter = (
   file: Express.Multer.File,
   cb: multer.FileFilterCallback
 ) => {
+  if (!file) {
+    return cb(null, true);
+  }
   req.body.mimeType = file.mimetype;
   // Check if the file is an image (you can add more checks as needed).
   if (

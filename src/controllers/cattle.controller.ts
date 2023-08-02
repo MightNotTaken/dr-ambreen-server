@@ -11,8 +11,12 @@ class CattleController {
       const cattleData: CattleInterface = req.body;
 
       const uploadedImage = req.file;
-      cattleData.filename = uploadedImage.filename; // Store the filename in the cattleData
-
+      if (uploadedImage) {
+        cattleData.filename = uploadedImage.filename; // Store the filename in the cattleData
+      } else {
+        cattleData.filename = '';
+        cattleData.mimeType = '';
+      }
       const cattle = new CattleData(cattleData);
       await CattleRepository.save(cattle);
       res.status(201).json(cattle);

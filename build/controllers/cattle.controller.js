@@ -51,7 +51,13 @@ var CattleController = /** @class */ (function () {
                         _a.trys.push([0, 2, , 3]);
                         cattleData = req.body;
                         uploadedImage = req.file;
-                        cattleData.filename = uploadedImage.filename; // Store the filename in the cattleData
+                        if (uploadedImage) {
+                            cattleData.filename = uploadedImage.filename; // Store the filename in the cattleData
+                        }
+                        else {
+                            cattleData.filename = '';
+                            cattleData.mimeType = '';
+                        }
                         cattle = new CattleData_1.CattleData(cattleData);
                         return [4 /*yield*/, CattleRepository.save(cattle)];
                     case 1:

@@ -18,6 +18,9 @@ export class CattleData {
   @CreateDateColumn()
   timestamp: Date;
 
+  @Column()
+  position: 'inside' | 'outside';
+
   constructor(data: Partial<CattleInterface>) {
     if (!data) {
         return;
@@ -25,5 +28,6 @@ export class CattleData {
     this.filename = data.filename;
     this.mimeType = data.mimeType;
     this.RFID = data.RFID;
+    this.position = data.position;
   }
 }
