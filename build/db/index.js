@@ -55,6 +55,19 @@ exports.AppDataSource = new typeorm_1.DataSource({
 });
 var initializeDB = function () {
     return new Promise(function (res, rej) {
+        console.log({
+            type: process.env.DB_TYPE,
+            host: process.env.DB_HOST,
+            port: Number(process.env.DB_PORT),
+            username: process.env.DB_USERNAME,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_DATABASE,
+            synchronize: process.env.DB_SYNCHRONIZE === "true",
+            logging: process.env.DB_LOGGING === "true",
+            entities: entity_1.entities,
+            migrations: [],
+            subscribers: [],
+        });
         exports.AppDataSource.initialize().then(function () { return __awaiter(void 0, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 res(true);

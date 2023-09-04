@@ -15,8 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api", routes);
 
-
-
 app.listen(PORT, () => {
   initialSetup();
   initializeDB().then(
